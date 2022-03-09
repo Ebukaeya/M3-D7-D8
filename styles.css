@@ -1,0 +1,40 @@
+body{
+    margin: 0;
+}
+p{
+    margin: 0;
+}
+
+.navigation{
+    padding-left: 100px;
+    background-color: #F8F9FA;
+}
+.heading{
+    margin-top: 30px;
+}
+
+.product-wrapper{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 60px;
+}
+
+.product-wrapper > div{
+    min-width: 20%;
+    min-height: 450px;
+    background-color: #F8F9FA;
+    padding-bottom: 10px;
+}
+
+.img-div{
+height: 70%;
+width: 100%;
+background-color: #F8F9FA;
+}
+.myForm-div{
+    width: 50%;
+}
+
+input{
+    background-color: #F8F9FA !important;
+}
