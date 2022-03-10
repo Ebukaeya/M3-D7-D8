@@ -31,6 +31,7 @@ async function handleSubmit(e){
         })
         console.log(res);
         if ( res.ok){
+            alert("success")
             let finalData = await res.json()
             console.log(finalData);
 
@@ -40,4 +41,8 @@ async function handleSubmit(e){
         console.log(error);
     }
 
+}
+
+async function (){
+  let   res = await fetch()
 }
