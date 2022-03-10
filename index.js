@@ -4,35 +4,29 @@ headers: {
 }
 }) */
 
-let [node] = document.getElementsByClassName("product-wrapper")
+let [node] = document.getElementsByClassName("product-wrapper");
 
+const fetchDate = async function () {
+  let res = await fetch("https://striveschool-api.herokuapp.com/api/product/", {
+    headers: {
+      Authorization:
+        "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MjI4YWI1YjRlYTdiMTAwMTVkMDY3YTMiLCJpYXQiOjE2NDY4MzkwNTUsImV4cCI6MTY0ODA0ODY1NX0.w2sPKEv5Mnw7UqPhes4mwEI_leSYbMqQ01F1f0mc4yo",
+    },
+  });
+  let data = await res.json();
 
-const fetchDate = async function(){
-   
-    let res = await fetch("https://striveschool-api.herokuapp.com/api/product/", {
-        headers: {
-        "Authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MjI4YWI1YjRlYTdiMTAwMTVkMDY3YTMiLCJpYXQiOjE2NDY4MzkwNTUsImV4cCI6MTY0ODA0ODY1NX0.w2sPKEv5Mnw7UqPhes4mwEI_leSYbMqQ01F1f0mc4yo"
-        }
-        })
-    let data = await res.json()
+  console.log(data);
+  displayData(data);
+  return data;
+};
 
-    console.log(data);
-    displayData(data)
-    return data
+window.onload = fetchDate;
 
+const displayData = (data) => {
+  data.map((data) => {
+    let { name, description, brand, imageUrl, price } = data;
 
-
-}
-
-window.onload = fetchDate
-
-
-const displayData = (data)=>{
-
-data.map((data)=>{
-let {name, description, brand, imageUrl, price} = data
-
-node.innerHTML+=`
+    node.innerHTML += `
 
 <div class="col-12 col-sm-4 col-lg-3">
 <div class="img-div">
@@ -56,15 +50,10 @@ node.innerHTML+=`
   </div>
   
 </div>
-<button style="width: 50%; " class="btn btn-primary mt-3"> buy</button>
+<a href="/Backoffcie.html?q=${data._id}"><button style="width: 50%; " class="btn btn-primary mt-3"> update</button></a>
+
 </div>
 
-`
-
-})
-
-}
-
-
-
-
+`;
+  });
+};
